@@ -4,8 +4,13 @@
  * Manages the data of the application.
  */
 
+export interface TodoModel {
+    id: string;
+    text: string;
+    complete: boolean;
+}
 
-class Todo {
+export class Todo {
     id: string;
     text: string;
     complete: boolean;
@@ -27,4 +32,4 @@ class Todo {
     }
 }
 
-console.log(new Todo('Arduino', true));
+//console.log(new Todo('Arduino', true));
