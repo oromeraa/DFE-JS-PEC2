@@ -5,6 +5,7 @@
  * Visual representation of the model.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.TodoView = void 0;
 class TodoView {
     constructor() {
         this._temporaryTodoText = "";
@@ -162,3 +163,4 @@ class TodoView {
     }
     ;
 }
+exports.TodoView = TodoView;

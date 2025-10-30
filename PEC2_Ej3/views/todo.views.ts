@@ -4,9 +4,9 @@
  * Visual representation of the model.
  */
 
-import { Todo } from '../models/todo.model.js';
+import { Todo, TodoModel } from '../models/todo.model.js';
 
-class TodoView {
+export class TodoView {
     private app: HTMLElement;
     private form: HTMLFormElement;
     private input: HTMLInputElement;
@@ -68,7 +68,7 @@ class TodoView {
         return element;
     };
 
-    public displayTodos(todos: Todo[]): void {
+    public displayTodos(todos: TodoModel[]): void {
         // Delete all nodes
         while (this.todoList.firstChild) {
             this.todoList.removeChild(this.todoList.firstChild);
