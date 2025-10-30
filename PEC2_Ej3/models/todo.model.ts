@@ -17,7 +17,7 @@ class Todo {
     }
 
     private uuidv4(): string {
-        const base: string = ([1e7] + -1e3 + -4e3 + -8e3 + -1e11);
+        const base: string = [1e7, 1e3, 4e3, 8e3, 1e11].join('-');
         let replaced: string = base.toString().replace(/[018]/g, (c: string) => {
             let rand: number = crypto.getRandomValues(new Uint8Array(1))[0];
             rand = rand & (15 >> (parseInt(c) / 4));
@@ -26,3 +26,5 @@ class Todo {
         return replaced;
     }
 }
+
+console.log(new Todo('Arduino', true));
