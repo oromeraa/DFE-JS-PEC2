@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    /* Basic Options */
+    "target": "es2015", // versión de JS a la que se transpilará TS
+    "module": "commonjs", // sistema de módulos Node.js trasdicional
+    "outDir": "./dist", // carpeta destino de los archivos transpilados
+    "rootDir": "./src", // carpeta raíz de los archivos fuente para transpilar
+    "strict": true, // habilita las verificaciones estrictas de tipo
+    "incremental": false /*true*/, // habilita la compilación incremental, acelera la transpilación guardando información de las anteriores transpilaciones
+    "tsBuildInfoFile": "./buildcache", // carpeta para almacenar información de transpilaciones incrementales anteriores
+  }
+}
