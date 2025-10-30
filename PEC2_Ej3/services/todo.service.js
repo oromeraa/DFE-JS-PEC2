@@ -5,6 +5,7 @@
  * Manages the data of the application.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.TodoService = void 0;
 // =======================================================================
 // --- Fake localStorage temporal (para test en Node) Está hardcoreado ---
 // =======================================================================
@@ -98,6 +99,7 @@ class TodoService {
     }
     ;
 }
+exports.TodoService = TodoService;
 /*
 // Test simple para el service
 const service = new TodoService();

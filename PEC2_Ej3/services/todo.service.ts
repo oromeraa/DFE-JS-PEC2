@@ -40,7 +40,7 @@ fakeLocalStorage.setItem(
 
 import { TodoModel, Todo } from "../models/todo.model";
 
-class TodoService {
+export class TodoService {
     private todos: TodoModel[] = [];
     private onTodoListChanged: (todos: TodoModel[]) => void = () => {};
 
@@ -68,7 +68,7 @@ class TodoService {
     };
 
     // sube los cambios a localStorage y notifica los cambios con el callback
-    public _commit(todos: TodoModel[]): void {
+    public _commit(todos: TodoModel[]): void { // va a private?
         this.onTodoListChanged(todos);
         fakeLocalStorage.setItem('todos', JSON.stringify(todos));
         console.log("Pushed changes to localStorage.");
