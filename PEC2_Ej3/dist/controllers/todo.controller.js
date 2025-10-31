@@ -1,4 +1,3 @@
-"use strict";
 /**
  * @class Controller
  *
@@ -7,9 +6,7 @@
  * @param model
  * @param view
  */
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.TodoController = void 0;
-class TodoController {
+export class TodoController {
     constructor(service, view) {
         this.onTodoListChanged = (todos) => {
             this.view.displayTodos(todos);
@@ -39,4 +36,3 @@ class TodoController {
     }
     ;
 }
-exports.TodoController = TodoController;

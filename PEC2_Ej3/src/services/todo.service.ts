@@ -4,7 +4,7 @@
  * Manages the data of the application.
  */
 
-// =======================================================================
+/* =======================================================================
 // --- Fake localStorage temporal (para test en Node) Está hardcoreado ---
 // =======================================================================
 const fakeLocalStorage = {
@@ -36,16 +36,16 @@ fakeLocalStorage.setItem(
   ])
 );
 
-// ===================================================================
+// =================================================================== */
 
-import { TodoModel, Todo } from "../models/todo.model";
+import { TodoModel, Todo } from "../models/todo.model.js";
 
 export class TodoService {
     private todos: TodoModel[] = [];
     private onTodoListChanged: (todos: TodoModel[]) => void = () => {};
 
     constructor() {
-        const localTodos: (string | null) = fakeLocalStorage.getItem('todos');
+        const localTodos: (string | null) = localStorage.getItem('todos');
         let parsedTodos: TodoModel[];
 
         try {
@@ -70,7 +70,7 @@ export class TodoService {
     // sube los cambios a localStorage y notifica los cambios con el callback
     public _commit(todos: TodoModel[]): void { // va a private?
         this.onTodoListChanged(todos);
-        fakeLocalStorage.setItem('todos', JSON.stringify(todos));
+        localStorage.setItem('todos', JSON.stringify(todos));
         console.log("Pushed changes to localStorage.");
     };
 

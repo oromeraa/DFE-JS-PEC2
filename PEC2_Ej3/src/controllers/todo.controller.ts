@@ -7,9 +7,9 @@
  * @param view
  */
 
-import { Todo, TodoModel } from '../models/todo.model';
-import { TodoService } from '../services/todo.service';
-import { TodoView } from '../views/todo.views';
+import { Todo, TodoModel } from '../models/todo.model.js';
+import { TodoService } from '../services/todo.service.js';
+import { TodoView } from '../views/todo.views.js';
 
 export class TodoController {
     private view: TodoView;
@@ -48,5 +48,5 @@ export class TodoController {
 
     private handleToggleTodo = (id: string): void => {
         this.service.toggleTodo(id);
-    }
+    };
 }

@@ -1,41 +1,47 @@
-"use strict";
 /**
  * @class Service
  *
  * Manages the data of the application.
  */
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.TodoService = void 0;
-// =======================================================================
+/* =======================================================================
 // --- Fake localStorage temporal (para test en Node) Está hardcoreado ---
 // =======================================================================
 const fakeLocalStorage = {
-    store: new Map(),
-    getItem(key) {
-        return this.store.has(key) ? this.store.get(key) : null;
-    },
-    setItem(key, value) {
-        this.store.set(key, value);
-    },
-    removeItem(key) {
-        this.store.delete(key);
-    },
-    clear() {
-        this.store.clear();
-    },
+  store: new Map<string, string>(),
+
+  getItem(key: string): string | null {
+    return this.store.has(key) ? this.store.get(key)! : null;
+  },
+
+  setItem(key: string, value: string): void {
+    this.store.set(key, value);
+  },
+
+  removeItem(key: string): void {
+    this.store.delete(key);
+  },
+
+  clear(): void {
+    this.store.clear();
+  },
 };
+
 // Guardamos datos simulados
-fakeLocalStorage.setItem("todos", JSON.stringify([
+fakeLocalStorage.setItem(
+  "todos",
+  JSON.stringify([
     { text: "Arduino", complete: true },
     { text: "ESP32", complete: true },
-]));
-// ===================================================================
-const todo_model_1 = require("../models/todo.model");
-class TodoService {
+  ])
+);
+
+// =================================================================== */
+import { Todo } from "../models/todo.model.js";
+export class TodoService {
     constructor() {
         this.todos = [];
         this.onTodoListChanged = () => { };
-        const localTodos = fakeLocalStorage.getItem('todos');
+        const localTodos = localStorage.getItem('todos');
         let parsedTodos;
         try {
             // Intentamos parsear los todos guardados en localStorage y si no hay nada, usamos una array vacia
@@ -46,7 +52,7 @@ class TodoService {
             parsedTodos = [];
         }
         this.todos = parsedTodos.map((todo) => {
-            return new todo_model_1.Todo(todo.text, todo.complete);
+            return new Todo(todo.text, todo.complete);
         });
     }
     ;
@@ -58,12 +64,12 @@ class TodoService {
     // sube los cambios a localStorage y notifica los cambios con el callback
     _commit(todos) {
         this.onTodoListChanged(todos);
-        fakeLocalStorage.setItem('todos', JSON.stringify(todos));
+        localStorage.setItem('todos', JSON.stringify(todos));
         console.log("Pushed changes to localStorage.");
     }
     ;
     addTodo(todoText) {
-        this.todos.push(new todo_model_1.Todo(todoText));
+        this.todos.push(new Todo(todoText));
         console.log("Added todo");
         // pusheamos cambios
         this._commit(this.todos);
@@ -77,7 +83,7 @@ class TodoService {
     editTodo(id, updatedText) {
         this.todos = this.todos
             .map(todo => todo.id === id ?
-            new todo_model_1.Todo(updatedText, todo.complete) :
+            new Todo(updatedText, todo.complete) :
             todo);
         console.log("Edited todo");
         // pusheamos cambios
@@ -86,7 +92,7 @@ class TodoService {
     toggleTodo(_id) {
         this.todos = this.todos
             .map(todo => todo.id === _id ?
-            new todo_model_1.Todo(todo.text, !todo.complete) :
+            new Todo(todo.text, !todo.complete) :
             todo);
         console.log("Toggle todo.");
         // pusheamos cambios
@@ -99,7 +105,6 @@ class TodoService {
     }
     ;
 }
-exports.TodoService = TodoService;
 /*
 // Test simple para el service
 const service = new TodoService();
@@ -119,4 +124,4 @@ service.deleteTodo(service.getTodos()[1].id);
 service.editTodo(service.getTodos()[1].id, "BeagleBone");
 
 service.toggleTodo(service.getTodos()[0].id);
-*/ 
+*/

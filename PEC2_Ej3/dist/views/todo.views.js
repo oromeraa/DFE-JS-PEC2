@@ -1,12 +1,9 @@
-"use strict";
 /**
  * @class View
  *
  * Visual representation of the model.
  */
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.TodoView = void 0;
-class TodoView {
+export class TodoView {
     constructor() {
         this._temporaryTodoText = "";
         this.app = this.getElement("#root"); // as HTMLElement;
@@ -34,7 +31,7 @@ class TodoView {
     // asigna el tipo correcto directamente sin ponerle el tipo
     // className opcional
     createElement(tag, className) {
-        const element = window.document.createElement(tag);
+        const element = document.createElement(tag);
         if (className)
             element.classList.add(className);
         return element;
@@ -163,4 +160,3 @@ class TodoView {
     }
     ;
 }
-exports.TodoView = TodoView;

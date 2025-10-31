@@ -1,12 +1,9 @@
-"use strict";
 /**
  * @class Model
  *
  * Manages the data of the application.
  */
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Todo = void 0;
-class Todo {
+export class Todo {
     constructor(text = '', complete = false) {
         this.id = this.uuidv4();
         this.text = text;
@@ -22,5 +19,4 @@ class Todo {
         return replaced;
     }
 }
-exports.Todo = Todo;
 //console.log(new Todo('Arduino', true));
