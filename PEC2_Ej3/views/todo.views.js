@@ -34,7 +34,7 @@ class TodoView {
     // asigna el tipo correcto directamente sin ponerle el tipo
     // className opcional
     createElement(tag, className) {
-        const element = document.createElement(tag);
+        const element = window.document.createElement(tag);
         if (className)
             element.classList.add(className);
         return element;

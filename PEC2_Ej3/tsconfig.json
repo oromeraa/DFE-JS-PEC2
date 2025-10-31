@@ -7,5 +7,5 @@
     "incremental": false /*true*/, // habilita la compilación incremental, acelera la transpilación guardando información de las anteriores transpilaciones
     "tsBuildInfoFile": "./buildcache", // carpeta para almacenar información de transpilaciones incrementales anteriores
   },
-  "include": ["controllers","models","services","views"]
+  "include": ["controllers","models","services","views","app.ts"]
 }
